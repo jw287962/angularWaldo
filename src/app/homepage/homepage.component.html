@@ -1,0 +1,5 @@
+<div *ngFor="let image of imageList">
+  <a routerLink="/searchImager" routerLinkActive="activebutton">
+    <app-images [image]="image"></app-images>
+  </a>
+</div>
