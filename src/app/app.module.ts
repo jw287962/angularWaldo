@@ -8,6 +8,7 @@ import { SearchComponent } from './search/search.component';
 import { NavbarrComponent } from './navbarr/navbarr.component';
 import { HomepageComponent } from './homepage/homepage.component';
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [

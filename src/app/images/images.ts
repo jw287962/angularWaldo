@@ -1,6 +1,7 @@
 export interface Images {
   url: string;
   name: string;
+  index: number;
   characters: Character[];
 }
 
