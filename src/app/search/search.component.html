@@ -1,8 +1,12 @@
 <main>
-  <div>
-    <img src="{{ imageList[getIndex()].url }}" height="400px" />{{
+  <div (click)="processClickPosition($event)" class="finderDiv">
+    <img src="{{ imageList[getIndex()].url }}" class="searchImage" />{{
       imageList[getIndex()].name
     }}
   </div>
-  <!-- <ng-template #withoutIndex>Loading...implement auto Route to Home</ng-template> -->
+  <div *ngIf="getIndex() != undefined">
+    <app-character-drop-down
+      [imageIndex]="getIndex()"
+    ></app-character-drop-down>
+  </div>
 </main>

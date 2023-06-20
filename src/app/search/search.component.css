@@ -1,0 +1,12 @@
+.searchImage {
+  max-width: 95vw;
+}
+.finderDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.finderDiv {
+  margin: 0px;
+}

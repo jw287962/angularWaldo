@@ -1,0 +1,10 @@
+body {
+  position: relative;
+}
+.hidden {
+  display: none;
+}
+.flexrow {
+  display: flex;
+  flex-direction: column;
+}
