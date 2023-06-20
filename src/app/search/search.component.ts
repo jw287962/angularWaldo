@@ -3,7 +3,7 @@ import { CommonModule, Time } from '@angular/common';
 import { ImageStateService } from '../services/image-state.service';
 import { imageList } from '../imageLists';
 import { CharacterDropDownComponent } from '../character-drop-down/character-drop-down.component';
-import { Coordinates } from '../images/images';
+import { Character, Coordinates } from '../images/images';
 
 @Component({
   selector: 'app-search',
@@ -20,18 +20,19 @@ export class SearchComponent {
   XYPage: Coordinates = { x: -Infinity, y: -Infinity };
   private _dropDown: HTMLElement = document.querySelector('.dropdownSearch')!;
   timer = { minutes: 0, seconds: 0 };
-  constructor(private imageStateService: ImageStateService) {
-    this.timer;
-  }
+  private _intervalTimer: ReturnType<typeof setInterval>;
 
-  ngOnInit() {
-    setInterval(() => {
+  constructor(private imageStateService: ImageStateService) {
+    this._intervalTimer = setInterval(() => {
       this.timer.seconds++;
       if (this.timer.seconds === 60) {
         this.timer.minutes++;
         this.timer.seconds = 0;
       }
     }, 1000);
+  }
+
+  ngOnInit() {
     this.setIndex(this.imageStateService.getIndex());
     document.addEventListener('click', (e) => {
       if (e.target != document.querySelector('.searchImage')) {
@@ -39,6 +40,7 @@ export class SearchComponent {
       }
     });
   }
+
   getIndex() {
     return this._index;
   }
@@ -68,18 +70,25 @@ export class SearchComponent {
   }
 
   processCharacterClickFinal(e: String) {
-    const index = e as any;
+    const i = e as any;
     const character =
-      this.imageStateService.getImageLists()[this.getIndex()].characters[
-        index * 1
-      ];
+      this.imageStateService.getImageLists()[this.getIndex()].characters;
     if (
-      this.XYPage.x > character.coordinates[0].x &&
-      this.XYPage.x < character.coordinates[3].x &&
-      this.XYPage.y > character.coordinates[0].y &&
-      this.XYPage.y < character.coordinates[3].y
+      this.XYPage.x > character[i * 1].coordinates[0].x &&
+      this.XYPage.x < character[i * 1].coordinates[3].x &&
+      this.XYPage.y > character[i * 1].coordinates[0].y &&
+      this.XYPage.y < character[i * 1].coordinates[3].y
     ) {
-      character.found();
+      character[i * 1].found();
     }
+
+    const foundFalse = character.find((ele) => ele.isFound === false);
+    if (!foundFalse) {
+      clearInterval(this._intervalTimer);
+    }
+  }
+
+  resetTimer() {
+    this.timer = { minutes: 0, seconds: 0 };
   }
 }
