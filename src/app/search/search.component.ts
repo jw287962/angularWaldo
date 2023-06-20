@@ -44,7 +44,6 @@ export class SearchComponent {
 
     const xRatio = e.offsetX / image.clientWidth;
     const yRatio = e.offsetY / image.clientHeight;
-    console.log(xRatio);
     if (xRatio > 0.7) {
       this._dropDown.style.left = `${e.pageX - this._dropDown.clientWidth}px`;
     } else {
@@ -60,14 +59,17 @@ export class SearchComponent {
 
   processCharacterClickFinal(e: String) {
     const index = e as any;
-    const character = imageList[this.getIndex()].characters[index * 1];
+    const character =
+      this.imageStateService.getImageLists()[this.getIndex()].characters[
+        index * 1
+      ];
     if (
       this.XYPage.x > character.coordinates[0].x &&
       this.XYPage.x < character.coordinates[3].x &&
       this.XYPage.y > character.coordinates[0].y &&
       this.XYPage.y < character.coordinates[3].y
     ) {
-      console.log('found');
+      character.found();
     }
   }
 }

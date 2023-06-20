@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { imageList } from '../imageLists';
 import { Character } from '../images/images';
+import { ImageStateService } from '../services/image-state.service';
 
 @Component({
   selector: 'app-character-drop-down',
@@ -21,11 +22,12 @@ export class CharacterDropDownComponent {
   @Input() imageIndex: number;
   characters!: Character[];
   @Output() searchIndexValue = new EventEmitter<string>();
-  constructor() {
+  constructor(private imageStateService: ImageStateService) {
     this.imageIndex = 0;
   }
   ngOnInit() {
-    this.characters = imageList[this.imageIndex].characters;
+    this.characters =
+      this.imageStateService.getImageLists()[this.imageIndex].characters;
   }
 
   processCharacterClick(e: Event) {

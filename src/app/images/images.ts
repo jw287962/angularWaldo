@@ -13,6 +13,7 @@ export interface Coordinates {
 export class Character {
   name: string;
   coordinates: Coordinates[];
+  isFound: boolean = false;
 
   constructor(name: string, coordinates: Coordinates[]) {
     this.name = name;
@@ -25,7 +26,13 @@ export class Character {
   getName(): string {
     return this.name;
   }
-  
+
+  found() {
+    this.isFound = true;
+  }
+  reset() {
+    this.isFound = false;
+  }
 }
 // export function Coordinate(coords: Coordinates) {
 //   coords = coords;

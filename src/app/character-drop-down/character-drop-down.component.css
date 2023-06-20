@@ -19,3 +19,11 @@
 .dropdownSearch > div > button:last-child {
   border: none;
 }
+.characterSearchButton {
+  font-weight: 800;
+  font-size: 15px;
+}
+.found {
+  font-weight: 300;
+  text-decoration-line: line-through;
+}
