@@ -1,4 +1,8 @@
 img {
-  max-width: 600px;
+  width: 600px;
   border-radius: 20px;
+  height: 500px;
+  image-rendering: auto;
+  object-fit: cover;
+  object-position: 0% 0%;
 }
