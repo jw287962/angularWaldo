@@ -14,13 +14,13 @@ import { Character, Coordinates } from '../images/images';
 })
 export class SearchComponent {
   // @Input() image!: Images;
-  imageList = imageList;
   private _index: number = 0;
-  private _toggle: Boolean = true;
-  XYPage: Coordinates = { x: -Infinity, y: -Infinity };
   private _dropDown: HTMLElement = document.querySelector('.dropdownSearch')!;
-  timer = { minutes: 0, seconds: 0 };
   private _intervalTimer: ReturnType<typeof setInterval>;
+
+  imageList = imageList;
+  private _XYPage: Coordinates = { x: -Infinity, y: -Infinity };
+  timer = { minutes: 0, seconds: 0 };
 
   constructor(private imageStateService: ImageStateService) {
     this._intervalTimer = setInterval(() => {
@@ -61,12 +61,10 @@ export class SearchComponent {
     } else {
       this._dropDown.style.left = `${e.pageX}px`;
     }
-    this._dropDown.style.top = `${e.pageY}px`;
+    this._dropDown.style.top = `${e.clientY}px`;
     this._dropDown.classList.remove('hidden');
 
-    this.XYPage = { x: xRatio, y: yRatio };
-
-    this._toggle = !this._toggle;
+    this._XYPage = { x: xRatio, y: yRatio };
   }
 
   processCharacterClickFinal(e: String) {
@@ -74,10 +72,10 @@ export class SearchComponent {
     const character =
       this.imageStateService.getImageLists()[this.getIndex()].characters;
     if (
-      this.XYPage.x > character[i * 1].coordinates[0].x &&
-      this.XYPage.x < character[i * 1].coordinates[3].x &&
-      this.XYPage.y > character[i * 1].coordinates[0].y &&
-      this.XYPage.y < character[i * 1].coordinates[3].y
+      this._XYPage.x > character[i * 1].coordinates[0].x &&
+      this._XYPage.x < character[i * 1].coordinates[3].x &&
+      this._XYPage.y > character[i * 1].coordinates[0].y &&
+      this._XYPage.y < character[i * 1].coordinates[3].y
     ) {
       character[i * 1].found();
     }
