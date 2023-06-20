@@ -25,6 +25,7 @@ export class Character {
   getName(): string {
     return this.name;
   }
+  
 }
 // export function Coordinate(coords: Coordinates) {
 //   coords = coords;

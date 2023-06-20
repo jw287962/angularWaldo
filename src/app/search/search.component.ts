@@ -40,14 +40,19 @@ export class SearchComponent {
     if (!this._dropDown) {
       this._dropDown = document.querySelector('.dropdownSearch')!;
     }
-
-    this._dropDown.style.top = `${e.pageY}px`;
-    this._dropDown.style.left = `${e.pageX}px`;
-    this._dropDown.classList.remove('hidden');
     const image: Element = document.querySelector('.searchImage')!;
 
     const xRatio = e.offsetX / image.clientWidth;
     const yRatio = e.offsetY / image.clientHeight;
+    console.log(xRatio);
+    if (xRatio > 0.7) {
+      this._dropDown.style.left = `${e.pageX - this._dropDown.clientWidth}px`;
+    } else {
+      this._dropDown.style.left = `${e.pageX}px`;
+    }
+    this._dropDown.style.top = `${e.pageY}px`;
+    this._dropDown.classList.remove('hidden');
+
     this.XYPage = { x: xRatio, y: yRatio };
 
     this._toggle = !this._toggle;
