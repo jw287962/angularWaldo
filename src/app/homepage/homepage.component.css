@@ -1,0 +1,27 @@
+.homepage {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  position: relative;
+}
+
+.homepage > button {
+  font-weight: 400;
+  border: none;
+  position: relative;
+  padding: 100px 7px;
+  height: 100%;
+}
+.homepage > button:hover {
+  border: 1px solid rgb(204, 204, 204);
+  font-weight: 800;
+}
+
+.imageContainer {
+  min-width: 75vw;
+  text-align: center;
+}
+
+.arrow {
+  font-size: 40px;
+}

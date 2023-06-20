@@ -1,11 +1,13 @@
-<main>
-  <div *ngFor="let image of imageList; let i = index">
-    <a
-      routerLink="/searchImager"
-      routerLinkActive="activebutton"
-      (click)="setIndex(i)"
-    >
-      <app-images [image]="image"></app-images>
-    </a>
-  </div>
+<main class="homepage">
+  <!-- <div *ngFor="let image of imageList; let i = index" class="home"> -->
+  <button class="arrow" (click)="previousImage()">‹</button>
+  <a
+    routerLink="/searchImager"
+    routerLinkActive="activebutton"
+    (click)="setIndex(getIndex())"
+    class="imageContainer"
+  >
+    <app-images [image]="imageList[getIndex()]"></app-images>
+  </a>
+  <button class="arrow" (click)="nextImage()">›</button>
 </main>

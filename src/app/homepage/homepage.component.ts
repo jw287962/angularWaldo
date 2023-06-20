@@ -1,4 +1,9 @@
-import { Component, Input, numberAttribute } from '@angular/core';
+import {
+  Component,
+  Input,
+  ViewEncapsulation,
+  numberAttribute,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Images } from '../images/images';
 import { imageList } from '../imageLists';
@@ -14,6 +19,7 @@ import { ImageStateService } from '../services/image-state.service';
   imports: [CommonModule, ImagesComponent, RouterModule],
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class HomepageComponent {
   constructor(private _imageStateService: ImageStateService) {}
@@ -26,5 +32,21 @@ export class HomepageComponent {
   // }'
   setIndex(value: number): void {
     this._imageStateService.setIndex(value);
+  }
+  getIndex(): number {
+    return this._imageStateService.getIndex();
+  }
+
+  previousImage() {
+    const value = this.getIndex() - 1;
+    this.setIndex(
+      value < 0 ? this._imageStateService.getImageLists().length - 1 : value
+    );
+  }
+  nextImage() {
+    const value = this.getIndex() + 1;
+    this.setIndex(
+      value > this._imageStateService.getImageLists().length - 1 ? 0 : value
+    );
   }
 }

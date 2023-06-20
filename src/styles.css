@@ -5,6 +5,7 @@
 }
 body {
   width: 100vw;
+  font-size: 20px;
   margin: 0px;
 }
 nav {
@@ -31,7 +32,9 @@ ul {
 nav > ul {
   display: flex;
 }
-a {
+a,
+button {
   text-decoration: none;
   color: black;
+  background-color: white;
 }
