@@ -6,6 +6,7 @@
   </div>
   <div *ngIf="getIndex() != undefined">
     <app-character-drop-down
+      (searchIndexValue)="processCharacterClickFinal($event)"
       [imageIndex]="getIndex()"
     ></app-character-drop-down>
   </div>

@@ -15,14 +15,14 @@ import { Coordinates } from '../images/images';
 export class SearchComponent {
   // @Input() image!: Images;
   imageList = imageList;
-  index: number = 0;
+  private _index: number = 0;
   private _toggle: Boolean = true;
   XYPage: Coordinates = { x: -Infinity, y: -Infinity };
   private _dropDown: HTMLElement = document.querySelector('.dropdownSearch')!;
   constructor(private imageStateService: ImageStateService) {}
 
   ngOnInit() {
-    this.index = this.imageStateService.getIndex();
+    this.setIndex(this.imageStateService.getIndex());
     document.addEventListener('click', (e) => {
       if (e.target != document.querySelector('.searchImage')) {
         this._dropDown?.classList.add('hidden');
@@ -30,23 +30,39 @@ export class SearchComponent {
     });
   }
   getIndex() {
-    return this.index;
+    return this._index;
+  }
+  setIndex(value: number) {
+    this._index = value;
   }
 
   processClickPosition(e: MouseEvent) {
     if (!this._dropDown) {
       this._dropDown = document.querySelector('.dropdownSearch')!;
     }
-    this.XYPage = { x: e.pageX, y: e.pageY };
 
-    this._dropDown.style.top = `${this.XYPage.y}px`;
-    this._dropDown.style.left = `${this.XYPage.x}px`;
+    this._dropDown.style.top = `${e.pageY}px`;
+    this._dropDown.style.left = `${e.pageX}px`;
     this._dropDown.classList.remove('hidden');
     const image: Element = document.querySelector('.searchImage')!;
 
     const xRatio = e.offsetX / image.clientWidth;
     const yRatio = e.offsetY / image.clientHeight;
-    console.log(xRatio, yRatio);
+    this.XYPage = { x: xRatio, y: yRatio };
+
     this._toggle = !this._toggle;
+  }
+
+  processCharacterClickFinal(e: String) {
+    const index = e as any;
+    const character = imageList[this.getIndex()].characters[index * 1];
+    if (
+      this.XYPage.x > character.coordinates[0].x &&
+      this.XYPage.x < character.coordinates[3].x &&
+      this.XYPage.y > character.coordinates[0].y &&
+      this.XYPage.y < character.coordinates[3].y
+    ) {
+      console.log('found');
+    }
   }
 }

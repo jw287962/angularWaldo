@@ -14,6 +14,8 @@
   background-color: white;
   border: none;
   border-bottom: 1px solid rgb(223, 223, 223);
-
   height: 25px;
+}
+.dropdownSearch > div > button:last-child {
+  border: none;
 }

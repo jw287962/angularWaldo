@@ -1,6 +1,11 @@
 <ul class="dropdownSearch hidden">
   <div class="flexrow">
-    <button *ngFor="let character of characters" class="characterSearchButton">
+    <button
+      *ngFor="let character of characters; let i = index"
+      class="characterSearchButton"
+      (click)="processCharacterClick($event)"
+      [attr.data-charIndex]="i"
+    >
       {{ character.getName() }}
     </button>
   </div>
