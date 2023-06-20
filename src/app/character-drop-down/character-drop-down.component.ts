@@ -13,14 +13,14 @@ import { Character } from '../images/images';
 })
 export class CharacterDropDownComponent {
   @Input() imageIndex: number;
-  characters: Character[];
+  characters!: Character[];
 
   constructor() {
     this.imageIndex = 0;
-
-    this.characters = imageList[this.imageIndex].characters;
   }
   ngOnInit() {
     console.log(imageList[this.imageIndex]);
+
+    this.characters = imageList[this.imageIndex].characters;
   }
 }
