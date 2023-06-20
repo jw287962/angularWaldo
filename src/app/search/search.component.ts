@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Time } from '@angular/common';
 import { ImageStateService } from '../services/image-state.service';
 import { imageList } from '../imageLists';
 import { CharacterDropDownComponent } from '../character-drop-down/character-drop-down.component';
@@ -19,9 +19,19 @@ export class SearchComponent {
   private _toggle: Boolean = true;
   XYPage: Coordinates = { x: -Infinity, y: -Infinity };
   private _dropDown: HTMLElement = document.querySelector('.dropdownSearch')!;
-  constructor(private imageStateService: ImageStateService) {}
+  timer = { minutes: 0, seconds: 0 };
+  constructor(private imageStateService: ImageStateService) {
+    this.timer;
+  }
 
   ngOnInit() {
+    setInterval(() => {
+      this.timer.seconds++;
+      if (this.timer.seconds === 60) {
+        this.timer.minutes++;
+        this.timer.seconds = 0;
+      }
+    }, 1000);
     this.setIndex(this.imageStateService.getIndex());
     document.addEventListener('click', (e) => {
       if (e.target != document.querySelector('.searchImage')) {

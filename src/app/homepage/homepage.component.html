@@ -1,9 +1,11 @@
-<div *ngFor="let image of imageList; let i = index">
-  <a
-    routerLink="/searchImager"
-    routerLinkActive="activebutton"
-    (click)="setIndex(i)"
-  >
-    <app-images [image]="image"></app-images>
-  </a>
-</div>
+<main>
+  <div *ngFor="let image of imageList; let i = index">
+    <a
+      routerLink="/searchImager"
+      routerLinkActive="activebutton"
+      (click)="setIndex(i)"
+    >
+      <app-images [image]="image"></app-images>
+    </a>
+  </div>
+</main>

@@ -1,8 +1,6 @@
 <main>
   <div (click)="processClickPosition($event)" class="finderDiv">
-    <img src="{{ imageList[getIndex()].url }}" class="searchImage" />{{
-      imageList[getIndex()].name
-    }}
+    <img src="{{ imageList[getIndex()].url }}" class="searchImage" />
   </div>
   <div *ngIf="getIndex() != undefined">
     <app-character-drop-down
@@ -10,4 +8,13 @@
       [imageIndex]="getIndex()"
     ></app-character-drop-down>
   </div>
+  <p class="timer">
+    {{
+      (timer.minutes < 10 ? "0" : "") +
+        timer.minutes +
+        " : " +
+        (timer.seconds < 10 ? "0" : "") +
+        timer.seconds
+    }}
+  </p>
 </main>

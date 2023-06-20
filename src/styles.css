@@ -1,8 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --heightNav: 50px;
+}
+body {
+  width: 100vw;
+  margin: 0px;
+}
+nav {
+  position: fixed;
+  width: 100vw;
+  background-color: white;
+  border-bottom: 1px solid black;
+  padding: 0px 5px;
+  display: flex;
+  align-items: center;
+  height: var(--heightNav);
+}
+main {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: var(--heightNav);
+}
 ul {
   list-style: none;
 }
-
 nav > ul {
   display: flex;
 }

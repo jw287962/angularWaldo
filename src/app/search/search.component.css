@@ -1,5 +1,5 @@
 .searchImage {
-  max-width: 95vw;
+  max-width: 100vw;
 }
 .finderDiv {
   display: flex;
@@ -8,5 +8,9 @@
 }
 
 .finderDiv {
-  margin: 0px;
+}
+
+.timer {
+  position: fixed;
+  top: 0px;
 }
