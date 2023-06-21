@@ -14,11 +14,11 @@ main {
   position: relative;
   padding: 100px 10px;
   height: 100%;
-  border: 1px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  border: 2px solid rgb(255, 255, 255);
 }
 .homepage > button:hover {
   border: 1px solid rgb(204, 204, 204);
-  border-radius: 10px;
   font-weight: 800;
 }
 
