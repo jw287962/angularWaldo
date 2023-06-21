@@ -8,13 +8,19 @@
       [imageIndex]="getIndex()"
     ></app-character-drop-down>
   </div>
-  <p class="timer">
-    {{
-      (timer.minutes < 10 ? "0" : "") +
-        timer.minutes +
-        " : " +
-        (timer.seconds < 10 ? "0" : "") +
-        timer.seconds
-    }}
-  </p>
+  <div class="gameData">
+    <div></div>
+    <div class="timer">
+      {{
+        (timer.minutes < 10 ? "0" : "") +
+          timer.minutes +
+          " : " +
+          (timer.seconds < 10 ? "0" : "") +
+          timer.seconds
+      }}
+    </div>
+    <div class="remaining">
+      {{ tobeFound }}
+    </div>
+  </div>
 </main>

@@ -21,7 +21,7 @@ export class SearchComponent {
   imageList = imageList;
   private _XYPage: Coordinates = { x: -Infinity, y: -Infinity };
   timer = { minutes: 0, seconds: 0 };
-
+  tobeFound: number = 0;
   constructor(private imageStateService: ImageStateService) {
     this._intervalTimer = setInterval(() => {
       this.timer.seconds++;
@@ -39,6 +39,8 @@ export class SearchComponent {
         this._dropDown?.classList.add('hidden');
       }
     });
+    this.tobeFound =
+      this.imageStateService.getImageLists()[this.getIndex()].characters.length;
   }
 
   getIndex() {
@@ -78,6 +80,7 @@ export class SearchComponent {
       this._XYPage.y < character[i * 1].coordinates[3].y
     ) {
       character[i * 1].found();
+      this.tobeFound--;
     }
 
     const foundFalse = character.find((ele) => ele.isFound === false);

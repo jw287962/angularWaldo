@@ -2,22 +2,14 @@
 
 :root {
   --heightNav: 50px;
+  --rightMargin: 20px;
 }
 body {
   width: 100vw;
   font-size: 20px;
   margin: 0px;
 }
-nav {
-  position: fixed;
-  width: 100vw;
-  background-color: white;
-  border-bottom: 1px solid black;
-  padding: 0px 5px;
-  display: flex;
-  align-items: center;
-  height: var(--heightNav);
-}
+
 main {
   width: 100vw;
   display: flex;
@@ -29,9 +21,7 @@ main {
 ul {
   list-style: none;
 }
-nav > ul {
-  display: flex;
-}
+
 a,
 button {
   text-decoration: none;
