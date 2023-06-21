@@ -15,8 +15,9 @@ import { HomepageComponent } from './homepage/homepage.component';
     AppRoutingModule,
     NavbarrComponent,
     RouterModule.forRoot([
-      { path: '', component: HomepageComponent },
+      { path: 'angularWaldo', component: HomepageComponent },
       { path: 'searchImager', component: SearchComponent },
+      { path: '**', component: HomepageComponent },
     ]),
   ],
   providers: [],
