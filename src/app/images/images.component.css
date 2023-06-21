@@ -1,8 +1,8 @@
 img {
-  width: 600px;
   border-radius: 20px;
-  height: 500px;
+  max-height: 500px;
   image-rendering: auto;
   object-fit: cover;
   object-position: 0% 0%;
+  width: clamp(300px, 75vw, 1000px);
 }

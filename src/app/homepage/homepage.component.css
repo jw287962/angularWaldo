@@ -11,20 +11,18 @@ main {
 
 .homepage > button {
   font-weight: 400;
-  border: none;
-  width: 100%;
   position: relative;
-  padding: 100px 7px;
+  padding: 100px 10px;
   height: 100%;
   border: 1px solid rgb(255, 255, 255);
 }
 .homepage > button:hover {
   border: 1px solid rgb(204, 204, 204);
+  border-radius: 10px;
   font-weight: 800;
 }
 
 .imageContainer {
-  min-width: 75vw;
   text-align: center;
   position: relative;
 }
