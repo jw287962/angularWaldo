@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { ImageStateService } from '../services/image-state.service';
 import { AppRoutingModule } from '../app-routing.module';
 
 @Component({
@@ -9,4 +11,12 @@ import { AppRoutingModule } from '../app-routing.module';
   templateUrl: './navbarr.component.html',
   styleUrls: ['./navbarr.component.css'],
 })
-export class NavbarrComponent {}
+export class NavbarrComponent {
+  private _imageStateService: ImageStateService;
+  constructor(imageStateService: ImageStateService) {
+    this._imageStateService = imageStateService;
+  }
+  processReset() {
+    this._imageStateService.resetFound();
+  }
+}

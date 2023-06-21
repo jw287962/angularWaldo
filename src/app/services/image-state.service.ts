@@ -22,4 +22,11 @@ export class ImageStateService {
   foundCharacter(value: number) {
     this.imageLists[this.imageIndex].characters[value].found();
   }
+
+  resetFound() {
+    const characters = this.imageLists[this.imageIndex].characters;
+    for (let i = 0; i < characters.length; i++) {
+      characters[i].reset();
+    }
+  }
 }
