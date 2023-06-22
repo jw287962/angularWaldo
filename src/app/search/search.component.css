@@ -48,3 +48,14 @@
   text-align: center;
   margin-right: var(--rightMargin);
 }
+
+.notice {
+  color: red;
+  position: fixed;
+  font-weight: 800;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+  border: 1px solid black;
+  top: 100px;
+}

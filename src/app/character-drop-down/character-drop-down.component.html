@@ -6,6 +6,7 @@
       [ngClass]="[characters && characters[i].isFound === true ? 'found' : '']"
       (click)="processCharacterClick($event)"
       [attr.data-charIndex]="i"
+      [disabled]="characters[i].isFound"
     >
       {{ character.getName() }}
     </button>

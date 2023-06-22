@@ -11,24 +11,21 @@
   </div>
   <div class="gameData">
     <div class="timer">
-      {{
-        (timer.minutes < 10 ? "0" : "") +
-          timer.minutes +
-          " : " +
-          (timer.seconds < 10 ? "0" : "") +
-          timer.seconds
-      }}
+      {{ displayTimer() }}
     </div>
     <div
       class="remaining"
       (mouseover)="processHover($event)"
       (mouseleave)="mouseLeave()"
     >
-      {{ tobeFound }}
+      {{ tobeFoundRemaining }}
       <app-character-drop-down
         class="gameDataDropDown hidden"
         [imageIndex]="getIndex()"
       ></app-character-drop-down>
     </div>
+  </div>
+  <div class="notice" [class.hidden]="noticeText.length === 0">
+    {{ noticeText }}
   </div>
 </main>

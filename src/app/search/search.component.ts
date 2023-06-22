@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, DoCheck, SimpleChanges } from '@angular/core';
 import { CommonModule, Time } from '@angular/common';
 import { ImageStateService } from '../services/image-state.service';
 import { imageList } from '../imageLists';
@@ -12,7 +12,7 @@ import { Character, Coordinates } from '../images/images';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
 })
-export class SearchComponent {
+export class SearchComponent implements DoCheck {
   // @Input() image!: Images;
   private _index: number = 0;
   private _dropDown: HTMLElement = document.querySelector('.dropdownSearch')!;
@@ -21,7 +21,11 @@ export class SearchComponent {
   imageList = imageList;
   private _XYPage: Coordinates = { x: -Infinity, y: -Infinity };
   timer = { minutes: 0, seconds: 0 };
-  tobeFound: number = 0;
+  tobeFoundRemaining: number = 0;
+  noticeText: string = '';
+  hasChangedText: boolean = false;
+  currentTimeout!: ReturnType<typeof setTimeout>;
+  ngDoCheck(): void {}
   constructor(private imageStateService: ImageStateService) {
     this._intervalTimer = setInterval(() => {
       this.timer.seconds++;
@@ -39,7 +43,7 @@ export class SearchComponent {
         this._dropDown?.classList.add('hidden');
       }
     });
-    this.tobeFound =
+    this.tobeFoundRemaining =
       this.imageStateService.getImageLists()[this.getIndex()].characters.length;
   }
 
@@ -80,12 +84,29 @@ export class SearchComponent {
       this._XYPage.y < character[i * 1].coordinates[3].y
     ) {
       character[i * 1].found();
-      this.tobeFound--;
+      this.tobeFoundRemaining--;
+      this.updateNoticeText(`You Found ${character[i * 1].getName()}`);
+    } else {
+      this.updateNoticeText(`Better luck next time`);
     }
 
     const foundFalse = character.find((ele) => ele.isFound === false);
     if (!foundFalse) {
       clearInterval(this._intervalTimer);
+
+      this.updateNoticeText(`YOU DID IT! Time: ${this.displayTimer()}`);
+    }
+  }
+  updateNoticeText(text: string) {
+    this.noticeText = text;
+
+    if (this.noticeText.length > 1) {
+      if (this.currentTimeout) {
+        clearTimeout(this.currentTimeout);
+      }
+      this.currentTimeout = setTimeout(() => {
+        this.noticeText = '';
+      }, 1500);
     }
   }
 
@@ -101,5 +122,15 @@ export class SearchComponent {
   mouseLeave() {
     const gameData: HTMLElement = document.querySelector('.gameDataDropDown')!;
     gameData.classList.add('hidden');
+  }
+
+  displayTimer(): string {
+    return (
+      (this.timer.minutes < 10 ? '0' : '') +
+      this.timer.minutes +
+      ' : ' +
+      (this.timer.seconds < 10 ? '0' : '') +
+      this.timer.seconds
+    );
   }
 }

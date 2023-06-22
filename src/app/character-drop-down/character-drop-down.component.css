@@ -12,9 +12,6 @@
   position: fixed;
 }
 
-.gameDataDropDown {
-}
-
 .dropdownSearch > div > button:nth-child(n + 1) {
   background-color: white;
   border: none;
