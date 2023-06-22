@@ -1,13 +1,18 @@
 .dropdownSearch {
   position: fixed;
-  top: 0;
-  left: 0;
+
   margin: 0px;
 
   padding: 2px;
   border: 3px solid black;
   border-radius: 10px;
   background-color: white;
+}
+.clickDropDown {
+  position: fixed;
+}
+
+.gameDataDropDown {
 }
 
 .dropdownSearch > div > button:nth-child(n + 1) {

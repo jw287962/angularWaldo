@@ -52,7 +52,7 @@ export class SearchComponent {
 
   processClickPosition(e: MouseEvent) {
     if (!this._dropDown) {
-      this._dropDown = document.querySelector('.dropdownSearch')!;
+      this._dropDown = document.querySelector('.clickDropDown')!;
     }
     const image: Element = document.querySelector('.searchImage')!;
 
@@ -91,5 +91,15 @@ export class SearchComponent {
 
   resetTimer() {
     this.timer = { minutes: 0, seconds: 0 };
+  }
+
+  processHover(e: Event) {
+    const gameData: HTMLElement = document.querySelector('.gameDataDropDown')!;
+    gameData.classList.remove('hidden');
+  }
+
+  mouseLeave() {
+    const gameData: HTMLElement = document.querySelector('.gameDataDropDown')!;
+    gameData.classList.add('hidden');
   }
 }

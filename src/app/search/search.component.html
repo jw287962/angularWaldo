@@ -6,6 +6,7 @@
     <app-character-drop-down
       (searchIndexValue)="processCharacterClickFinal($event)"
       [imageIndex]="getIndex()"
+      class="clickDropDown hidden"
     ></app-character-drop-down>
   </div>
   <div class="gameData">
@@ -18,8 +19,16 @@
           timer.seconds
       }}
     </div>
-    <div class="remaining">
+    <div
+      class="remaining"
+      (mouseover)="processHover($event)"
+      (mouseleave)="mouseLeave()"
+    >
       {{ tobeFound }}
+      <app-character-drop-down
+        class="gameDataDropDown hidden"
+        [imageIndex]="getIndex()"
+      ></app-character-drop-down>
     </div>
   </div>
 </main>
