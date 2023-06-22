@@ -1,10 +1,11 @@
 a {
   padding: 5px;
   font-weight: 800;
-  z-index: 99;
+  z-index: 100;
 }
 nav {
-  z-index: 98;
+  z-index: 97;
+  background-color: white;
 }
 nav {
   position: fixed;

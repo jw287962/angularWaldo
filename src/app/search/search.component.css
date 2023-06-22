@@ -10,22 +10,37 @@
   align-items: center;
 }
 
-.gameData {
+/* .gameData {
   position: fixed;
   top: 0px;
   display: flex;
   align-items: center;
   height: var(--heightNav);
   width: 100%;
-  justify-content: space-between;
-}
+  z-index: 98;
 
+  justify-content: space-between;
+} */
+
+.gameData {
+  top: 15px;
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+}
+.timer,
+.remaining {
+  position: fixed;
+  cursor: default;
+}
 .timer {
-  top: 0px;
+  right: 50%;
   margin-right: calc(-1 * var(--rightMargin));
 }
 
 .remaining {
+  top: 13px;
+  right: 25%;
   height: 25px;
   width: 25px;
   border: 2px solid red;

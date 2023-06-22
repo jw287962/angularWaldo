@@ -1,11 +1,12 @@
 <main>
-  <!-- <div *ngFor="let image of imageList; let i = index" class="home"> -->
+  <div *ngIf="startingRound">Hi</div>
+
   <div class="homepage">
     <button class="arrow" (click)="previousImage()">‹</button>
     <a
       routerLink="/searchImager"
       routerLinkActive="activebutton"
-      (click)="setIndex(getIndex())"
+      (click)="processStartingGame($event)"
       class="imageContainer"
     >
       <app-images [image]="imageList[getIndex()]"></app-images>
