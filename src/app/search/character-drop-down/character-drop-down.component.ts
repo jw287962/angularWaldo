@@ -6,9 +6,9 @@ import {
   Output,
   ViewEncapsulation,
 } from '@angular/core';
-import { imageList } from '../imageLists';
-import { Character } from '../images/images';
-import { ImageStateService } from '../services/image-state.service';
+import { imageList } from 'src/app/imageLists';
+import { Character } from 'src/app/images/images';
+import { ImageStateService } from 'src/app/services/image-state.service';
 
 @Component({
   selector: 'app-character-drop-down',

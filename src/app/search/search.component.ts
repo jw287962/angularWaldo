@@ -2,7 +2,7 @@ import { Component, Input, DoCheck, SimpleChanges } from '@angular/core';
 import { CommonModule, Time } from '@angular/common';
 import { ImageStateService } from '../services/image-state.service';
 import { imageList } from '../imageLists';
-import { CharacterDropDownComponent } from '../character-drop-down/character-drop-down.component';
+import { CharacterDropDownComponent } from 'src/app/search/character-drop-down/character-drop-down.component';
 import { Character, Coordinates } from '../images/images';
 
 @Component({
